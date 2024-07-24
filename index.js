@@ -39,6 +39,14 @@ app.get("/waifu",async (req,res) => {
         return res.json(e);
     }
 })
+app.get("/oppai",async (req,res) => {
+    try{
+        const response = await axios.get("https://api.waifu.im/search?included_tags=oppai");
+        return await webImage(res,response.data.images[0].url);
+    }catch(e){
+        return res.json(e);
+    }
+})
 
 app.listen(5000,() => console.log("Server on"));
 
